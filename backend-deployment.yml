@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: neostream-api-server
+spec:
+  selector:
+    matchLabels:
+      app: neostream-api
+  template:
+    metadata:
+      labels:
+        app: neostream-api
+    spec:
+      containers:
+      - name: neostream-api
+        image: 
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: <Port>
