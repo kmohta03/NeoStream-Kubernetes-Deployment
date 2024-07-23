@@ -26,6 +26,16 @@ spec:
             secretKeyRef:
               name: db_url
               key: mongo_url
+        - name: REDIS_SERVER
+          value: "localhost"
+      - name: redis
+        image: redis
+        resources: 
+          limits: 
+            memory: "64Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 6379
 
 
 
