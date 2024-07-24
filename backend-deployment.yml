@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: neostream-api-server
+  name: neostreamapiserver
 spec:
   selector:
     matchLabels:
-      app: neostream-api
+      app: neostreamapi
   template:
     metadata:
       labels:
-        app: neostream-api
+        app: neostreamapi
     spec:
       containers:
-      - name: neostream-api
+      - name: neostreamapi
         image: backend-neostream:v4.0
         resources:
           limits:
@@ -24,7 +24,7 @@ spec:
         - name: MONGODB_URL
           valueFrom: 
             secretKeyRef:
-              name: db_url
+              name: dburl
               key: mongo_url
         - name: REDIS_SERVER
           value: "localhost"
