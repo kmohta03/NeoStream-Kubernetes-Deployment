@@ -7,7 +7,7 @@ spec:
   selector:
     app: neostreamapi
   ports:
-  - port: 3000
+  - port: 4000
     protocol: TCP
-    targetPort: 3000
-    nodePort: 30100
+    targetPort: 4000
+    nodePort: 30400
