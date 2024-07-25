@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: neostream-ingress
+  labels:
+    name: neostream-ingress
+  annotations: 
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: neostreamapiservice
+            port: 
+              number: 4000
