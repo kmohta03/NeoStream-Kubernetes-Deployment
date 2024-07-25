@@ -11,12 +11,17 @@ spec:
       labels:
         app: neostreamapi
     spec:
+      imagePullSecrets:
+      - name: ecr-docker-credentials
       containers:
       - name: neostreamapi
-        image: backend-neostream:v4.0
+        image: 825844616809.dkr.ecr.us-east-2.amazonaws.com/backend-neostream:v17
         resources:
+          requests:
+            memory: "256Mi"
+            cpu: "500m"
           limits:
-            memory: "128Mi"
+            memory: "256Mi"
             cpu: "500m"
         ports:
         - containerPort: 4000
@@ -27,15 +32,6 @@ spec:
               name: dburl
               key: mongo_url
         - name: REDIS_SERVER
-          value: "localhost"
-      - name: redis
-        image: redis
-        resources: 
-          limits: 
-            memory: "64Mi"
-            cpu: "100m"
-        ports:
-        - containerPort: 6379
-
+          value: "l/Users/kushal.mohta/Downloads/Terraform/NeoStream-Terraform/ecs.tf"
 
 
