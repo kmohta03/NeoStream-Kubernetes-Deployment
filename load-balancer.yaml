@@ -18,14 +18,21 @@ spec:
         app.kubernetes.io/component: controller
         app.kubernetes.io/name: aws-load-balancer-controller
     spec:
+      serviceAccountName: aws-eks-load-balancer-controller
+      securityContext: 
+        fsGroup: 1337
       containers:
       - name: controller 
         args: 
-        - --clustern-name=neostream-eks
+        - --cluster-name=neostream-eks
         - --ingress-class=alb
         - --aws-vpc-id=vpc-0bbe3b98882005120
         - --aws-region=us-east-2
         image: public.ecr.aws/eks/aws-load-balancer-controller:v2.4.7
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
         livenessProbe: 
           failureThreshold: 2
           httpGet: 
