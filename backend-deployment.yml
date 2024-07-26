@@ -2,7 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: neostreamapiserver
+  namespace: development
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: neostreamapi
@@ -17,12 +19,12 @@ spec:
       - name: neostreamapi
         image: 825844616809.dkr.ecr.us-east-2.amazonaws.com/backend-neostream:v17
         resources:
-          requests:
-            memory: "256Mi"
-            cpu: "500m"
+          # requests:
+          #   memory: "256Mi"
+          #   cpu: "500m"
           limits:
-            memory: "256Mi"
-            cpu: "500m"
+            memory: "1024Mi"
+            cpu: "1024m"
         ports:
         - containerPort: 4000
         env: 
