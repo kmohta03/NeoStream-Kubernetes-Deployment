@@ -7,6 +7,10 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/tags: Environment=development,Team=neostream
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-2:825844616809:certificate/5929f520-cc0d-496e-8e9e-2df978710ec0
+    alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS-1-2-2017-01
+    
 spec:
   ingressClassName: alb
   rules:
